@@ -20,7 +20,10 @@ function App() {
     setError(null); // Reset error state
     try {
       const parsedJson = JSON.parse(jsonInput);
-      const res = await axios.post("http://localhost:5000/bfhl", parsedJson);
+      const res = await axios.post(
+        `${import.meta.env.VITE_Backend_Url}/bfhl`,
+        parsedJson
+      );
       setResponse(res.data);
     } catch (error) {
       setError("Invalid JSON input or API error");
